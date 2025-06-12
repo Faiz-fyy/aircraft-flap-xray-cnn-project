@@ -23,7 +23,6 @@ Traditional X-ray film interpretation for water ingression detection relies enti
 
 ### Dataset Characteristics
 - 139 X-ray film photographs captured with smartphone (Pixel 7 Pro)
-- Ground truth validation: 89% accuracy between logbook vs. film analysis
 - Class distribution: 60% Water vs. 40% No Water (well-balanced)
 - Multi-format capture: DNG + JPEG pairs from physical radiography film
 - Manual ROI preprocessing: GIMP-based honeycomb area extraction
