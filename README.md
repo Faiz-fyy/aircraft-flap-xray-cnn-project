@@ -181,15 +181,11 @@ CREATE TABLE cnn_results (
 
 ```
 ├── notebooks/              # Final CNN implementation
-│   └── Aircraft Flap X-Ray CNN Analysis.ipynb
 ├── database/               # Schema extension and queries
-│   ├── Schema Extension.sql
-│   └── Example Queries.sql
 ├── visualizations/         # Model analysis and dashboards
 │   ├── dashboards/         # Tableau performance dashboards
 │   └── model_analysis/     # Training curves and confusion matrices
-├── docs/                   # Methodology documentation
-│   └── Project Methodology.md
+├── docs/                   # Methodology and documentation
 └── README.md               # Project overview
 ```
 
