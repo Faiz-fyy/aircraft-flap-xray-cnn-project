@@ -10,15 +10,15 @@ ORDER BY True_Label, Predicted_Label;
 
 -- Confidence distribution
 SELECT CASE 
-		WHEN Confidence_Score >= 0.8 THEN 'High (≥0.8)'
-		WHEN Confidence_Score >= 0.6 THEN 'Medium (0.6-0.8)'
-		ELSE 'Low (<0.6)'
+	WHEN Confidence_Score >= 0.8 THEN 'High (≥0.8)'
+	WHEN Confidence_Score >= 0.6 THEN 'Medium (0.6-0.8)'
+	ELSE 'Low (<0.6)'
 END AS Confidence_Level, COUNT(*) AS Count, ROUND(AVG(CASE WHEN Correct_Prediction = 1 THEN 1.0 ELSE 0.0 END), 3) AS Accuracy
 FROM cnn_results
 GROUP BY CASE 
-		WHEN Confidence_Score >= 0.8 THEN 'High (≥0.8)'
-		WHEN Confidence_Score >= 0.6 THEN 'Medium (0.6-0.8)'
-        ELSE 'Low (<0.6)'
+	WHEN Confidence_Score >= 0.8 THEN 'High (≥0.8)'
+	WHEN Confidence_Score >= 0.6 THEN 'Medium (0.6-0.8)'
+       	ELSE 'Low (<0.6)'
 END;
     
 -- Performance by image density
@@ -30,12 +30,11 @@ END AS Density_Group, COUNT(*) AS Count, ROUND(AVG(c.Confidence_Score), 3) AS Av
 ROUND(AVG(CASE WHEN c.Correct_Prediction = 1 THEN 1.0 ELSE 0.0 END), 3) AS Accuracy
 FROM cnn_results AS c
 JOIN image_data AS i ON c.Image_ID = i.Image_ID
-GROUP BY 
-    CASE 
+GROUP BY CASE 
         WHEN i.Average_Density < 2.0 THEN 'Low Density (<2.0)'
         WHEN i.Average_Density < 2.5 THEN 'Medium Density (2.0-2.5)'
         ELSE 'High Density (≥2.5)'
-    END;
+END;
     
 --  Incorrect predictions
 SELECT 
