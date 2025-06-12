@@ -8,23 +8,23 @@
 
 ## Project Overview
 
-This project develops a Convolutional Neural Network (CNN) for automated detection of water ingression in aircraft trailing edge flap structures using X-ray radiographic images. Building upon previous predictive analytics work (Aircraft Flap Water Ingression Predictive Analytics), this initiative demonstrates computer vision capabilities and represents a proof-of-concept for digital transformation in aviation NDT operations.
+This project develops a Convolutional Neural Network (CNN) for automated detection of water ingression in aircraft trailing edge flap structures using X-ray radiographic images. Building upon previous predictive analytics work (Aircraft Flap Water Ingression Predictive Analytics), this initiative demonstrates computer vision capabilities for digital transformation in aviation NDT operations.
 
-**Final Achievement: 88.9% accuracy using ResNet50 transfer learning with conservative confidence scoring for safety-critical applications**
+**Final Achievement: 88.9% accuracy using ResNet50 transfer learning with confidence scoring for safety-critical applications**
 
 ## Business Problem
 
 Traditional X-ray film interpretation for water ingression detection relies entirely on human expertise, creating bottlenecks in inspection workflows and potential for human error. As aviation MRO operations move toward digital radiography, automated analysis capabilities become essential for:
 
-- **Consistency**: Eliminating subjective interpretation variations
-- **Efficiency**: Reducing inspection turnaround times
-- **Safety**: Providing systematic confidence assessment for critical decisions
-- **Scalability**: Supporting increased inspection volumes with digital workflows
+- Consistency: Eliminating subjective interpretation variations
+- Efficiency: Reducing inspection turnaround times
+- Safety: Providing systematic confidence assessment for critical decisions
+- Scalability: Supporting increased inspection volumes with digital workflows
 
 ### Dataset Characteristics
 - 139 X-ray film photographs captured with smartphone (Pixel 7 Pro)
 - Class distribution: 60% Water vs. 40% No Water (well-balanced)
-- Multi-format capture: DNG + JPEG pairs from physical radiography film
+- Multi-format capture: DNG + JPEG pairs from physical radiographs
 - Manual ROI preprocessing: GIMP-based honeycomb area extraction
 
 ### Data Governance Note
@@ -32,25 +32,25 @@ Traditional X-ray film interpretation for water ingression detection relies enti
 - Database Records: 138 images (maintaining complete audit trail)
 - Rationale: One image lacks traceable exposure ID - included in training for performance but excluded from database for integrity
 
-## Technical Journey: From Failure to Success
+## Technical Development Process
 
 ### Phase 1: Custom CNN Attempt (Initial Failure)
 **Approach:**
 - Simple architecture: 16→32→64 filter progression
 - Training: 133 images with standard augmentation
-- **Result: ~50% accuracy (random guessing)**
+- Result: ~50% accuracy (random guessing performance)
 
-**Key Learning:** Small specialized datasets require transfer learning, not custom architectures.
+**Learning:** Small specialized datasets require transfer learning, not custom architectures.
 
-### Phase 2: Transfer Learning Success
+### Phase 2: Transfer Learning Implementation
 **ResNet50 Strategy:**
 - Two-phase progressive training
   - Phase 1: Frozen ResNet50 base (58% accuracy)
   - Phase 2: Fine-tuned top 20 layers (81% accuracy)
 - Grayscale→RGB conversion for ImageNet compatibility
-- **Result: 81% accuracy** (exceeded 75% target)
+- Result: 81% accuracy (exceeded 75% target)
 
-### Phase 3: Reproducibility Crisis & Resolution
+### Phase 3: Reproducibility Challenge
 **Problem:** Results varied 60%-80% across identical runs
 **Solution:** Complete deterministic pipeline implementation
 ```python
@@ -64,7 +64,7 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 
 ### Phase 4: Final Optimization
 **Dataset Refinement:** Added 6 uncertain images after expert review
-**Final Performance:** **88.9% accuracy** with full reproducibility
+**Final Performance:** 88.9% accuracy with full reproducibility
 
 ## Model Performance
 
@@ -94,9 +94,9 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 ## Technical Implementation
 
 ### Transfer Learning Optimization
-- **Grayscale Adaptation**: RGB conversion maintaining X-ray characteristics
-- **Progressive Training**: Systematic layer unfreezing for optimal fine-tuning
-- **Deterministic Pipeline**: Complete reproducibility for production deployment
+- Grayscale adaptation: RGB conversion maintaining X-ray characteristics
+- Progressive training: Systematic layer unfreezing for optimal fine-tuning
+- Deterministic pipeline: Complete reproducibility for production deployment
 
 ### Safety-Critical Confidence Scoring
 ```python
@@ -104,13 +104,13 @@ def interpret_prediction(confidence_score):
     if confidence_score > 0.8:
         return "HIGH CONFIDENCE: Automated decision"
     elif confidence_score > 0.6:
-        return "MEDIUM CONFIDENCE: PIC review"
+        return "MEDIUM CONFIDENCE: Senior review"
     else:
         return "LOW CONFIDENCE: Manual verification required"
 ```
 
 ### Database Integration
-**Schema Extension** (Aircraft Flap Water Ingression Predictive Analytics continuation):
+**Schema Extension** (Aircraft Flap Water Ingression Predictive Analytics Project continuation):
 ```sql
 CREATE TABLE image_data (
     Image_ID VARCHAR(10) PRIMARY KEY,
@@ -133,10 +133,10 @@ CREATE TABLE cnn_results (
 ## Business Intelligence Insights
 
 ### Performance Analysis
-- **Overall Accuracy**: 95.7% (132/138 correct predictions)
-- **Nil Detection**: 96.4% accuracy (critical for preventing false alarms)
-- **Water Detection**: 95.2% accuracy (essential for safety)
-- **High Confidence Reliability**: 100% accuracy in 72 high-confidence cases
+- Overall Accuracy: 95.7% (132/138 correct predictions)
+- Nil Detection: 96.4% accuracy (critical for preventing false alarms)
+- Water Detection: 95.2% accuracy (essential for safety)
+- High Confidence Reliability: 100% accuracy in 72 high-confidence cases
 
 ### Operational Recommendations
 1. Immediate Deployment: High-confidence predictions (≥80%) for automated triage
@@ -148,12 +148,12 @@ CREATE TABLE cnn_results (
 
 ### Technical Lessons
 1. Transfer Learning Superiority: ResNet50 outperformed custom CNN by +38.9%
-2. Reproducibility Criticality: Deterministic operations essential for production
+2. Reproducibility Importance: Deterministic operations essential for production
 3. Preprocessing Consistency: Training/validation/testing pipeline alignment crucial
 4. Conservative Confidence: Safety-critical applications require manual review triggers
 
 ### Domain Integration
-- NDT Expertise: Honeycomb structure understanding
+- NDT Expertise: Honeycomb composite structure understanding
 - Aviation Safety: Conservative decision-making for critical applications
 - Digital Transformation: Bridge between traditional film and digital workflows
 - Proof-of-Concept Value: Demonstrates AI feasibility for specialized NDT applications
@@ -181,22 +181,22 @@ CREATE TABLE cnn_results (
 
 ```
 ├── notebooks/              # Final CNN implementation
-│   └── aircraft_flap_cnn_analysis.ipynb
+│   └── Aircraft Flap X-Ray CNN Analysis.ipynb
 ├── database/               # Schema extension and queries
-│   ├── schema_extension.sql
-│   └── example_queries.sql
+│   ├── Schema Extension.sql
+│   └── Example Queries.sql
 ├── visualizations/         # Model analysis and dashboards
 │   ├── dashboards/         # Tableau performance dashboards
 │   └── model_analysis/     # Training curves and confusion matrices
 ├── docs/                   # Methodology documentation
-│   └── methodology.md
+│   └── Project Methodology.md
 └── README.md               # Project overview
 ```
 
 ## Results & Business Impact
 
 ### Technical Achievements
-- Target Exceeded: 88.9% vs. 70-75% target (+13.9-18.9%)
+- Target Performance: 88.9% vs. 70-75% target (+13.9-18.9%)
 - Reproducibility: 100% consistent results across runs
 - Conservative Framework: 100% accuracy in high-confidence predictions
 - Database Coverage: 138 images with complete metadata integration
@@ -207,8 +207,8 @@ CREATE TABLE cnn_results (
 - Safety Framework: Conservative confidence scoring for critical decisions
 - Technical Development: Advanced computer vision and transfer learning implementation
 
-### Strategic Value
-- Innovation Leadership: Pioneering CNN application in aviation NDT
+### Business Value
+- Innovation Application: CNN implementation in aviation NDT
 - Scalability: Database architecture ready for enterprise deployment
 - Risk Management: Systematic confidence assessment for operational safety
 - Future Integration: Clear pathway for digital transformation initiatives
@@ -235,9 +235,9 @@ CREATE TABLE cnn_results (
 
 ## Conclusion
 
-This project successfully demonstrates the application of advanced computer vision techniques to safety-critical aviation NDT challenges. The evolution from custom CNN failure (50%) to optimized transfer learning success (88.9%) illustrates systematic problem-solving and technical adaptability essential for real-world AI implementation.
+This project successfully demonstrates the application of advanced computer vision techniques to safety-critical aviation NDT challenges. The progression from custom CNN failure (50%) to optimized transfer learning success (88.9%) illustrates systematic problem-solving and technical adaptability essential for real-world AI implementation.
 
-The work establishes a foundation for computer vision capabilities in aviation MRO digital transformation while maintaining the rigorous safety standards essential to the industry.
+The work establishes a foundation for computer vision capabilities in aviation MRO digital transformation while maintaining the rigorous safety standards essential to the industry. This represents the culmination of systematic skill development in applying data science to aviation safety challenges, progressing from traditional analytics to advanced computer vision implementation.
 
 ---
 
