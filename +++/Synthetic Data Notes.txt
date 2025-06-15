@@ -1,0 +1,51 @@
+Aircraft Flap X-Ray CNN Dataset - Synthetic Data Creation Note
+
+Overview
+This synthetic dataset replicates the structure and visual characteristics of real-world aircraft flap X-ray radiographic images, ensuring complete data anonymization for public sharing and educational purposes.
+
+Data Generation Methodology
+
+Statistical Fidelity
+The synthetic data was engineered to match key statistical characteristics observed in the original dataset:
+- Water ingression rate: approximately 60% matching the proportion from real CNN training data
+- Class distribution: Maintained the 60% water vs 40% nil distribution reflecting operational findings
+- Sample size: Scalable from 5 test images to 1000+ production datasets
+- Image dimensions: 512px width with variable height (300-350px) matching CNN input requirements
+
+Realistic Visual Patterns
+Several domain-specific patterns were incorporated to ensure the synthetic data reflects authentic X-ray radiographic characteristics:
+
+Honeycomb Structure: Proper hexagonal cell patterns (45-50 vertical, 55-60 horizontal cells) with consistent wall thickness
+
+Water Ingression: Organic flow patterns using Perlin noise algorithms with clustered and scattered distributions, gravity-influenced bottom-heavy patterns, multi-severity classification (Light: 5%, Moderate: 20%, Severe: 40%, Extreme: 80% outliers)
+
+Repair Work: Geometric bright patterns (horizontal/vertical lines, L-shapes, hollow patches) with 3-5 cell thickness, maintaining brightness similar to water ingression
+
+X-ray Physics: Authentic radiographic effects including quantum noise, film grain, density-based contrast variations, and conditional skew transformation (4% probability)
+
+Lead Markings: Professional text rendering (4.5% probability) with authentic lead block letter markings
+
+Data Anonymization Features
+- Structural anonymization: Generic honeycomb patterns remove aircraft-specific composite configurations
+- Equipment abstraction: Standardized cell dimensions mask proprietary manufacturing specifications  
+- Process anonymization: Synthetic repair patterns eliminate traceability to specific maintenance procedures
+- Image ID masking: Sequential SE-codes replace actual radiographic exposure identifiers
+
+Technical Specifications
+- Resolution: 512px width, 300-350px height optimized for CNN training
+- File format: PNG with class-prefixed sequential naming (water_SE001.png, nil_SE002.png)
+- Generation pipeline: Multi-layer composition with hexagonal pattern creation, water simulation, repair work application, and film effects processing
+
+Educational Value
+This dataset enables practitioners to:
+- Develop CNN architectures for defect detection in composite structures
+- Practice transfer learning techniques with domain-specific radiographic data
+- Explore computer vision applications in safety-critical aviation environments
+- Apply confidence scoring frameworks for operational deployment
+- Build production-ready image processing pipelines for digital radiography
+
+Limitations and Real-World Complexity
+Important Note: Real-life X-ray radiographic data exhibits significantly greater complexity than this synthetic representation. This dataset serves as a foundational tool for computer vision development but should not be considered a complete representation of operational radiographic complexity.
+
+Data Security Note
+The synthetic generation process ensures no reverse-engineering of original business intelligence, operational patterns, or proprietary maintenance procedures while maintaining analytical complexity suitable for data science practice and portfolio development in aerospace NDT applications.
