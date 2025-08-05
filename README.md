@@ -88,7 +88,7 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 | Confidence Level | Count | Accuracy | Recommendation |
 |------------------|-------|----------|----------------|
 | High (≥80%) | 72 | 100% | Automated decision |
-| Medium (60-80%) | 8 | 87.5% | Senior review |
+| Medium (60-80%) | 8 | 87.5% | Review Recommended|
 | Low (<60%) | 58 | 91.4% | Manual verification required |
 
 ## Technical Implementation
