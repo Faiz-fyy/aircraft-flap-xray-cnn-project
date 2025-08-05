@@ -88,7 +88,7 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 | Confidence Level | Count | Accuracy | Recommendation |
 |------------------|-------|----------|----------------|
 | High (≥80%) | 72 | 100% | Automated decision |
-| Medium (60-80%) | 8 | 87.5% | Review Recommended|
+| Medium (60-80%) | 8 | 87.5% | Review recommended|
 | Low (<60%) | 58 | 91.4% | Manual verification required |
 
 ## Technical Implementation
@@ -104,7 +104,7 @@ def interpret_prediction(confidence_score):
     if confidence_score > 0.8:
         return "HIGH CONFIDENCE: Automated decision"
     elif confidence_score > 0.6:
-        return "MEDIUM CONFIDENCE: Senior review"
+        return "MEDIUM CONFIDENCE: Review recommended"
     else:
         return "LOW CONFIDENCE: Manual verification required"
 ```
